@@ -4,10 +4,12 @@ import java.util.Objects;
 
 public abstract class Jet {
 
+	
 	private String model;
 	private double speed;
 	private int range;
 	private long price;
+	
 	
 	public Jet () {}
 	
@@ -69,6 +71,14 @@ public abstract class Jet {
 		Jet other = (Jet) obj;
 		return Objects.equals(model, other.model) && price == other.price && range == other.range
 				&& Double.doubleToLongBits(speed) == Double.doubleToLongBits(other.speed);
+	}
+
+	@Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		builder.append("Jet [model=").append(model).append(", speed=").append(speed).append(", range=").append(range)
+				.append(", price=").append(price).append(", getClass()=").append(getClass()).append("]");
+		return builder.toString();
 	}
 	
 	
