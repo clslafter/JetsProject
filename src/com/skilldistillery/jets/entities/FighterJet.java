@@ -9,7 +9,8 @@ public class FighterJet extends Jet implements CombatReady {
 
 	@Override
 	public void fight() {
-		// TODO Auto-generated method stub
+		System.out.println("Contact with enemy fighter. " + super.getModel() + " engaging.");
+		System.out.println("Enemy fighter vanquished. Fight is over.");
 
 	}
 
