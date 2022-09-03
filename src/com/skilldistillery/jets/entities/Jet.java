@@ -4,15 +4,14 @@ import java.util.Objects;
 
 public abstract class Jet {
 
-	
 	private String model;
 	private double speed;
 	private int range;
 	private long price;
-	
-	
-	public Jet () {}
-	
+
+	public Jet() {
+	}
+
 	public Jet(String model, double speed, int range, long price) {
 		super();
 		this.model = model;
@@ -20,8 +19,8 @@ public abstract class Jet {
 		this.range = range;
 		this.price = price;
 	}
-	
-	public abstract void fly ();
+
+	public abstract void fly();
 
 	public String getModel() {
 		return model;
@@ -80,6 +79,5 @@ public abstract class Jet {
 				.append(", price=").append(price).append(", getClass()=").append(getClass()).append("]");
 		return builder.toString();
 	}
-	
-	
+
 }
