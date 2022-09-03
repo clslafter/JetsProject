@@ -6,10 +6,10 @@ public class JetImpl extends Jet {
 		super();
 	}
 
-	@Override
-	public void fly() {
-		// TODO Auto-generated method stub
-
-	}
+//	@Override
+//	public void fly() {
+//		// TODO Auto-generated method stub
+//
+//	}
 
 }

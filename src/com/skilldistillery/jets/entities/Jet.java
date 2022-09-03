@@ -20,7 +20,16 @@ public abstract class Jet {
 		this.price = price;
 	}
 
-	public abstract void fly();
+	public String fly() {
+		StringBuilder builder = new StringBuilder();
+		
+		builder.append("The ").append(model).append(" of ").append(getClass()).append(" with an average speed of ")
+		.append(speed).append(" and a range of ").append(range).append(" is flying. It has a maximum "
+				+ "flying time of ").append(range / speed);
+	
+		
+		return builder.toString();
+	}
 
 	public String getModel() {
 		return model;
