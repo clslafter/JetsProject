@@ -20,16 +20,7 @@ public abstract class Jet {
 		this.price = price;
 	}
 
-	public String fly() {
-		StringBuilder builder = new StringBuilder();
-		
-		builder.append("The ").append(model).append(" of ").append(getClass()).append(" with an average speed of ")
-		.append(speedInMph).append(" and a range of ").append(range).append(" is flying. It has a maximum "
-				+ "flying time of ").append(range / speedInMph);
-	
-		
-		return builder.toString();
-	}
+	public abstract void fly();
 
 	public String getModel() {
 		return model;
@@ -84,8 +75,8 @@ public abstract class Jet {
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
-		builder.append("Jet [model=").append(model).append(", speed=").append(speedInMph).append(", range=").append(range)
-				.append(", price=").append(price).append(", getClass()=").append(getClass()).append("]");
+		builder.append(getClass().getSimpleName()).append(" [Model: ").append(model).append(", Speed in MPH: ").append(speedInMph).append(", Range: ").append(range)
+				.append(", Price: ").append(price).append("]");
 		return builder.toString();
 	}
 
