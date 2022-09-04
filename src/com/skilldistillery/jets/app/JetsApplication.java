@@ -278,6 +278,7 @@ public class JetsApplication {
 			}
 
 			System.out.println(newJet + " added");
+			break;
 		}
 
 		return newJet;
