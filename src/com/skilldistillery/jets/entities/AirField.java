@@ -123,4 +123,14 @@ public class AirField {
 			}
 		}
 	}
+
+	public Jet getJet(int idx) {
+		
+		return jets.get(idx);
+	}
+
+	public int getSize() {
+		
+		return jets.size();
+	}
 }
