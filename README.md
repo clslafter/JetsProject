@@ -44,6 +44,9 @@ I had an interesting issue with the remove option showing up twice, and realized
 because I was passing in a menu argument. I was able to solve that by creating a local
 variable and passing that instead.
 
+I also learned that as tempting as it was to define the fly method in the abstract class, 
+it was necessary to leave it as abstract and define it in each of the subclasses...even though
+the fly method for each turned out to be the same.
 
 ## Technologies Used
 Eclipse, Java, Git, GitHub, Mac OS
