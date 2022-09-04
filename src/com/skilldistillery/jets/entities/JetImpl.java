@@ -2,6 +2,8 @@ package com.skilldistillery.jets.entities;
 
 public class JetImpl extends Jet {
 
+	public JetImpl () {};
+	
 	public JetImpl(String model, double speedInMph, int range, long price) {
 		super(model, speedInMph, range, price);
 	}

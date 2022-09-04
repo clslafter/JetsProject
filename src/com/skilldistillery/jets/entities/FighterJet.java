@@ -2,6 +2,8 @@ package com.skilldistillery.jets.entities;
 
 public class FighterJet extends Jet implements CombatReady {
 
+	public FighterJet () {};
+	
 	public FighterJet(String model, double speedInMph, int range, long price) {
 		super(model, speedInMph, range, price);
 

@@ -4,7 +4,6 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
@@ -14,6 +13,7 @@ import com.skilldistillery.jets.entities.CargoPlane;
 import com.skilldistillery.jets.entities.FighterJet;
 import com.skilldistillery.jets.entities.Jet;
 import com.skilldistillery.jets.entities.JetImpl;
+import com.sun.glass.ui.Pixels.Format;
 
 public class JetsApplication {
 	AirField field1 = new AirField();
@@ -55,7 +55,7 @@ public class JetsApplication {
 
 				double jetSpeedInMph = Double.parseDouble(jetInfo[2]);
 				int jetRange = (int) Double.parseDouble(jetInfo[3]);
-				Long jetPrice = Long.parseLong(jetInfo[4]);
+				long jetPrice = Long.parseLong(jetInfo[4]);
 
 				if (jetClass.equalsIgnoreCase("CargoPlane")) {
 					newJet = new CargoPlane(jetModel, jetSpeedInMph, jetRange, jetPrice);
@@ -115,33 +115,32 @@ public class JetsApplication {
 				field1.flyAllJets(field1.getJets());
 				System.out.println();
 				break;
-				
+
 			case 3:
 				field1.displayFastestJet(field1.getJets());
 				System.out.println();
 				break;
-				
+
 			case 4:
 				field1.displayLongestRangeJet(field1.getJets());
 				System.out.println();
 				break;
-				
+
 			case 5:
 				field1.loadAllCargoJets(field1.getJets());
 				System.out.println();
 				break;
-				
+
 			case 6:
 				field1.dogFight(field1.getJets());
 				System.out.println();
 				break;
-				
-//			case 7:
-//				addJetPrompts();
-//				field1.addJet();
-//				System.out.println();
-//				break;
-		
+
+			case 7:
+				field1.addJet(addJetPrompts());
+				System.out.println();
+				break;
+
 			default:
 				System.out.println("Please use a number from 1 to 9.");
 				System.out.println();
@@ -152,35 +151,126 @@ public class JetsApplication {
 
 	}
 
-//	private Jet addJetPrompts() {
-//			Scanner kb = new Scanner(System.in);
-//		
-//		
-//			System.out.println();
-//			System.out.println("Please enter the Jet information."
-//					+ "\nTo quit, type quit when prompted for the type");
-//			System.out.println();
-//			
-//			System.out.print("Food Truck Name: ");
-//			
-//			
-//			String name = kb.nextLine();
-//			if(name.equalsIgnoreCase("quit")) {
-//				break;
-//			}
-//			
-//			System.out.print("Food Truck Type: ");
-//			String type = kb.nextLine();
-//			
-//			
-//			System.out.print("Food Truck Rating as a number between 1 and 5: ");
-//			int rating = kb.nextInt();
-//			kb.nextLine();
-//			
-//			FoodTruck truck = new FoodTruck(name, type, rating);
-//			
-//			addTruck(truck);
-//		
-//	}
+	private Jet addJetPrompts() {
+		Scanner kb = new Scanner(System.in);
+		Jet newJet = new JetImpl();
 
+		while (true) {
+			
+			System.out.println();
+			System.out.println("What type of jet would you like to add?" 
+			+ "\nTo return to the previous menu, type \"quit\" at any time");
+			System.out.println();
+			System.out.println("1. Cargo Plane");
+			System.out.println("2. Fighter Jet");
+			System.out.println("3. Any other type of jet.");
+			System.out.println();
+			
+			String jetType = kb.nextLine();
+
+			
+
+			if (jetType.equalsIgnoreCase("quit")) {
+				break;
+			} else {
+				switch (jetType) {
+				case "1":
+					newJet = new CargoPlane();
+					break;
+
+				case "2":
+					newJet = new FighterJet();
+					break;
+
+				case "3":
+					newJet = new JetImpl();
+					break;
+					
+				default:
+					System.out.println("Invalid entry. Please choose 1, 2, or 3.");
+					System.out.println();
+					break;
+
+				}
+				
+
+			}		
+
+			
+			System.out.println();
+			
+			System.out.print("Enter Jet Model: ");
+			
+			
+			String model = kb.nextLine();
+			if(model.equalsIgnoreCase("quit")) {
+				break;
+			} else {
+				newJet.setModel(model);
+			}
+			
+			System.out.print("Enter Jet Speed in Miles Per Hour: ");
+			String speed = kb.nextLine();
+			
+			if(speed.equalsIgnoreCase("quit")) {
+				break;
+			} else {
+				
+				double speedInMph = 0;
+				try {
+					speedInMph = Double.parseDouble(speed);
+				} catch (NumberFormatException e) {
+					// TODO Auto-generated catch block
+					System.err.println("Sorry. Your entry is not in the correct format. Nothing has been added to this field.");
+				}
+				
+				newJet.setSpeedInMph(speedInMph);
+			}
+			
+			
+			System.out.print("Enter Jet Range in Miles: ");
+			String jetRange = kb.nextLine();
+
+			if(jetRange.equalsIgnoreCase("quit")) {
+				break;
+			} else {
+				
+				int range = 0;
+				try {
+					range = (int) Double.parseDouble(jetRange);
+				} catch (NumberFormatException e) {
+					// TODO Auto-generated catch block
+					System.err.println("Sorry. Your entry is not in the correct format. Nothing has been added to this field.");
+				}
+				
+				newJet.setRange(range);
+			}
+			
+			
+			System.out.print("Enter Jet Price: ");
+			String jetPrice = kb.nextLine();
+
+			if(jetPrice.equalsIgnoreCase("quit")) {
+				break;
+			} else { 
+				
+				long price = 0L;
+				try {
+					price = (long) Long.parseLong(jetPrice);
+				} catch (NumberFormatException e) {
+					// TODO Auto-generated catch block
+					System.err.println("Sorry. Your entry is not in the correct format. Nothing has been added to this field.");
+				}
+				
+				newJet.setPrice(price);	
+			}
+			
+
+			
+			System.out.println(newJet + " added");
+		}
+		
+		return newJet;
+
+	}
 }

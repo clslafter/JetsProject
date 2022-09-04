@@ -34,7 +34,7 @@ public abstract class Jet {
 		return speedInMph;
 	}
 
-	public void setSpeedinMph(double speed) {
+	public void setSpeedInMph(double speed) {
 		this.speedInMph = speed;
 	}
 
