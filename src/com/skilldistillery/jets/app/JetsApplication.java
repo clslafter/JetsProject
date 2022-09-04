@@ -201,7 +201,7 @@ public class JetsApplication {
 					break;
 
 				default:
-					System.out.println("Invalid entry. Please choose 1, 2, or 3.");
+					System.out.println("Invalid entry. Default jet type assigned.");
 					System.out.println();
 					break;
 
